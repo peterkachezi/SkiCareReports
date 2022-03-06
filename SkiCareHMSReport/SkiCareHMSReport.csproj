@@ -106,8 +106,14 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -160,6 +166,18 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -226,15 +244,73 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsReportController.cs" />
-    <Compile Include="DataSet\DataSet1.Designer.cs">
+    <Compile Include="DataSet\ReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\ApplicationUsersModule\ApplicationUserDTO.cs" />
+    <Compile Include="DTOs\ApplicationUsersModule\ForgotPasswordDTO.cs" />
+    <Compile Include="DTOs\ApplicationUsersModule\LoginDTO.cs" />
+    <Compile Include="DTOs\ApplicationUsersModule\RegisterDTO.cs" />
+    <Compile Include="DTOs\ApplicationUsersModule\ResetPasswordDTO.cs" />
+    <Compile Include="DTOs\ApplicationUsersModule\RoleDTO.cs" />
+    <Compile Include="DTOs\AppointmentLimitModule\AppointmentLimitDTO.cs" />
+    <Compile Include="DTOs\AppointmentModule\AppointmentDTO.cs" />
+    <Compile Include="DTOs\BedCategoryModule\BedCategoryDTO.cs" />
+    <Compile Include="DTOs\BedModule\BedDTO.cs" />
+    <Compile Include="DTOs\CashPaymentModule\CashPaymentDTO.cs" />
+    <Compile Include="DTOs\CountryModule\CountryDTO.cs" />
+    <Compile Include="DTOs\CountyModule\CountyDTO.cs" />
+    <Compile Include="DTOs\DepartmentModule\DepartmentDTO.cs" />
+    <Compile Include="DTOs\DesignationModule\DesignationDTO.cs" />
+    <Compile Include="DTOs\DiseaseModule\DiseaseDTO.cs" />
+    <Compile Include="DTOs\EmployeeModule\EmployeeDTO.cs" />
+    <Compile Include="DTOs\EmployeeModule\NextOfKinDTO.cs" />
+    <Compile Include="DTOs\EmployeeSpecialityModule\SpecialityDTO.cs" />
+    <Compile Include="DTOs\HospitalModule\HospitalDTO.cs" />
+    <Compile Include="DTOs\HospitalServicesModule\HospitalServicesDTO.cs" />
+    <Compile Include="DTOs\HospitalVisitModule\HospitalVisitDTO.cs" />
+    <Compile Include="DTOs\InsuranceModule\InsuranceDTO.cs" />
+    <Compile Include="DTOs\LabRequestModule\LabRequestDetailsDTO.cs" />
+    <Compile Include="DTOs\LabRequestModule\LabRequestDTO.cs" />
+    <Compile Include="DTOs\LabRequestModule\LabRequestProfileDTO.cs" />
+    <Compile Include="DTOs\LabResultsModule\LabResultDTO.cs" />
+    <Compile Include="DTOs\LabTestModule\LabTestDTO.cs" />
+    <Compile Include="DTOs\MedicalHistoryModule\MedicalHistoryDTO.cs" />
+    <Compile Include="DTOs\MpesaPaymentModule\PaymentDTO.cs" />
+    <Compile Include="DTOs\ObstetricHistoryModule\ObstetricHistoryDTO.cs" />
+    <Compile Include="DTOs\PatientModule\PatientDTO.cs" />
+    <Compile Include="DTOs\PatientModule\PatientImageDTO.cs" />
+    <Compile Include="DTOs\PatientModule\PatientNextOfKinDTO.cs" />
+    <Compile Include="DTOs\PatientModule\PatientProfileDTO.cs" />
+    <Compile Include="DTOs\PaymentModeModule\PaymentModeDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\CustomerModule\CustomerDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\ManufacturerModule\ManufacturerDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\MedicineCategoryModule\MedicineCategoryDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\MedicineModule\MedicineDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\MedicineTypeModule\MedicineTypeDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\PharmacyServicesModule\PharmacyServicesDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\SalesOrderModule\OrderDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\SalesOrderModule\SalesOrderDetailsDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\ShelfModule\ShelfDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\StockModule\StockDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\StockMovementModule\StockMovementDTO.cs" />
+    <Compile Include="DTOs\Pharmacy\UnitModule\UnitDTO.cs" />
+    <Compile Include="DTOs\PrescriptionModule\PrescriptionDetailDTO.cs" />
+    <Compile Include="DTOs\PrescriptionModule\PrescriptionDTO.cs" />
+    <Compile Include="DTOs\PrescriptionModule\PrescriptionProfileDTO.cs" />
+    <Compile Include="DTOs\SocialHistoryModule\SocialHistoryDTO.cs" />
+    <Compile Include="DTOs\SupplerModule\SupplerDTO.cs" />
+    <Compile Include="DTOs\TimeSlotModule\TimeSlotDTO.cs" />
+    <Compile Include="DTOs\TriageModule\TriageDTO.cs" />
+    <Compile Include="DTOs\TriageModule\TriageProfileDTO.cs" />
     <Compile Include="EDMX\Appointment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -421,7 +497,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PatientsReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Services\PatientModule\IPatientService.cs" />
+    <Compile Include="Services\PatientModule\PatientService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -452,16 +531,16 @@
     <Content Include="EDMX\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="DataSet\DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Content Include="DataSet\ReportDataSet.xsc">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Content>
-    <None Include="DataSet\DataSet1.xsd">
+    <None Include="DataSet\ReportDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ReportDataSet.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSet\DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Content Include="DataSet\ReportDataSet.xss">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -531,10 +610,11 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\PatientsReport.rpt">
+    <Content Include="Reports\PatientsReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PatientsReport.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

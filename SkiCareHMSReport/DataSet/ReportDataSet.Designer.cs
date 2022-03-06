@@ -20,9 +20,9 @@ namespace SkiCareHMSReport.DataSet {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ReportDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    public partial class ReportDataSet : global::System.Data.DataSet {
         
         private PatientsDataTable tablePatients;
         
@@ -30,7 +30,7 @@ namespace SkiCareHMSReport.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DataSet1() {
+        public ReportDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace SkiCareHMSReport.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ReportDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace SkiCareHMSReport.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            ReportDataSet cln = ((ReportDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace SkiCareHMSReport.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "ReportDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet1.xsd";
+            this.Namespace = "http://tempuri.org/ReportDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablePatients = new PatientsDataTable();
@@ -225,7 +225,7 @@ namespace SkiCareHMSReport.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            ReportDataSet ds = new ReportDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -281,9 +281,7 @@ namespace SkiCareHMSReport.DataSet {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnFirstName;
-            
-            private global::System.Data.DataColumn columnLastName;
+            private global::System.Data.DataColumn columnFullName;
             
             private global::System.Data.DataColumn columnIdNumber;
             
@@ -364,17 +362,9 @@ namespace SkiCareHMSReport.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FirstNameColumn {
+            public global::System.Data.DataColumn FullNameColumn {
                 get {
-                    return this.columnFirstName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LastNameColumn {
-                get {
-                    return this.columnLastName;
+                    return this.columnFullName;
                 }
             }
             
@@ -561,8 +551,7 @@ namespace SkiCareHMSReport.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PatientsRow AddPatientsRow(
                         System.Guid Id, 
-                        string FirstName, 
-                        string LastName, 
+                        string FullName, 
                         string IdNumber, 
                         string Email, 
                         string PhoneNumber, 
@@ -584,8 +573,7 @@ namespace SkiCareHMSReport.DataSet {
                 PatientsRow rowPatientsRow = ((PatientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
-                        FirstName,
-                        LastName,
+                        FullName,
                         IdNumber,
                         Email,
                         PhoneNumber,
@@ -634,8 +622,7 @@ namespace SkiCareHMSReport.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnFirstName = base.Columns["FirstName"];
-                this.columnLastName = base.Columns["LastName"];
+                this.columnFullName = base.Columns["FullName"];
                 this.columnIdNumber = base.Columns["IdNumber"];
                 this.columnEmail = base.Columns["Email"];
                 this.columnPhoneNumber = base.Columns["PhoneNumber"];
@@ -661,10 +648,8 @@ namespace SkiCareHMSReport.DataSet {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFirstName);
-                this.columnLastName = new global::System.Data.DataColumn("LastName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastName);
+                this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullName);
                 this.columnIdNumber = new global::System.Data.DataColumn("IdNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdNumber);
                 this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
@@ -705,8 +690,7 @@ namespace SkiCareHMSReport.DataSet {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
-                this.columnFirstName.MaxLength = 2147483647;
-                this.columnLastName.MaxLength = 2147483647;
+                this.columnFullName.MaxLength = 2147483647;
                 this.columnIdNumber.MaxLength = 2147483647;
                 this.columnEmail.MaxLength = 2147483647;
                 this.columnPhoneNumber.MaxLength = 2147483647;
@@ -792,7 +776,7 @@ namespace SkiCareHMSReport.DataSet {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                ReportDataSet ds = new ReportDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -878,33 +862,17 @@ namespace SkiCareHMSReport.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string FirstName {
+            public string FullName {
                 get {
                     try {
-                        return ((string)(this[this.tablePatients.FirstNameColumn]));
+                        return ((string)(this[this.tablePatients.FullNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FirstName\' in table \'Patients\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FullName\' in table \'Patients\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePatients.FirstNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string LastName {
-                get {
-                    try {
-                        return ((string)(this[this.tablePatients.LastNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LastName\' in table \'Patients\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePatients.LastNameColumn] = value;
+                    this[this.tablePatients.FullNameColumn] = value;
                 }
             }
             
@@ -1178,26 +1146,14 @@ namespace SkiCareHMSReport.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFirstNameNull() {
-                return this.IsNull(this.tablePatients.FirstNameColumn);
+            public bool IsFullNameNull() {
+                return this.IsNull(this.tablePatients.FullNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFirstNameNull() {
-                this[this.tablePatients.FirstNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLastNameNull() {
-                return this.IsNull(this.tablePatients.LastNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLastNameNull() {
-                this[this.tablePatients.LastNameColumn] = global::System.Convert.DBNull;
+            public void SetFullNameNull() {
+                this[this.tablePatients.FullNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1404,7 +1360,7 @@ namespace SkiCareHMSReport.DataSet {
         }
     }
 }
-namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
+namespace SkiCareHMSReport.DataSet.ReportDataSetTableAdapters {
     
     
     /// <summary>
@@ -1529,8 +1485,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Patients";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("FirstName", "FirstName");
-            tableMapping.ColumnMappings.Add("LastName", "LastName");
+            tableMapping.ColumnMappings.Add("FirstName", "FullName");
             tableMapping.ColumnMappings.Add("IdNumber", "IdNumber");
             tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("PhoneNumber", "PhoneNumber");
@@ -1552,16 +1507,15 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Patients] WHERE (([Id] = @Original_Id))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Patients] WHERE (([Id] = @Original_Id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Patients] ([Id], [FirstName], [LastName], [IdNumber], [Email], [PhoneNumber], [Gender], [CreateDate], [CreatedBy], [Town], [BloodGroup], [CountryId], [DateOfBirth], [ImageName], [MaritalStatus], [MiddleName], [Occupation], [Plan], [RegCode], [Title], [PaymentMode]) VALUES (@Id, @FirstName, @LastName, @IdNumber, @Email, @PhoneNumber, @Gender, @CreateDate, @CreatedBy, @Town, @BloodGroup, @CountryId, @DateOfBirth, @ImageName, @MaritalStatus, @MiddleName, @Occupation, @Plan, @RegCode, @Title, @PaymentMode)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Patients] ([Id], [FirstName], [IdNumber], [Email], [PhoneNumber], [Gender], [CreateDate], [CreatedBy], [Town], [BloodGroup], [CountryId], [DateOfBirth], [ImageName], [MaritalStatus], [MiddleName], [Occupation], [Plan], [RegCode], [Title], [PaymentMode]) VALUES (@Id, @FirstName, @IdNumber, @Email, @PhoneNumber, @Gender, @CreateDate, @CreatedBy, @Town, @BloodGroup, @CountryId, @DateOfBirth, @ImageName, @MaritalStatus, @MiddleName, @Occupation, @Plan, @RegCode, @Title, @PaymentMode)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1582,11 +1536,10 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentMode", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentMode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Patients] SET [Id] = @Id, [FirstName] = @FirstName, [LastName] = @LastName, [IdNumber] = @IdNumber, [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Gender] = @Gender, [CreateDate] = @CreateDate, [CreatedBy] = @CreatedBy, [Town] = @Town, [BloodGroup] = @BloodGroup, [CountryId] = @CountryId, [DateOfBirth] = @DateOfBirth, [ImageName] = @ImageName, [MaritalStatus] = @MaritalStatus, [MiddleName] = @MiddleName, [Occupation] = @Occupation, [Plan] = @Plan, [RegCode] = @RegCode, [Title] = @Title, [PaymentMode] = @PaymentMode WHERE (([Id] = @Original_Id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Patients] SET [Id] = @Id, [FirstName] = @FirstName, [IdNumber] = @IdNumber, [Email] = @Email, [PhoneNumber] = @PhoneNumber, [Gender] = @Gender, [CreateDate] = @CreateDate, [CreatedBy] = @CreatedBy, [Town] = @Town, [BloodGroup] = @BloodGroup, [CountryId] = @CountryId, [DateOfBirth] = @DateOfBirth, [ImageName] = @ImageName, [MaritalStatus] = @MaritalStatus, [MiddleName] = @MiddleName, [Occupation] = @Occupation, [Plan] = @Plan, [RegCode] = @RegCode, [Title] = @Title, [PaymentMode] = @PaymentMode WHERE (([Id] = @Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1621,9 +1574,9 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, FirstName, LastName, IdNumber, Email, PhoneNumber, Gender, CreateDate," +
-                " CreatedBy, Town, BloodGroup, CountryId, DateOfBirth, ImageName, MaritalStatus, " +
-                "MiddleName, Occupation, [Plan], RegCode, Title, PaymentMode FROM dbo.Patients";
+            this._commandCollection[0].CommandText = "SELECT Id, FirstName, IdNumber, Email, PhoneNumber, Gender, CreateDate, CreatedBy" +
+                ", Town, BloodGroup, CountryId, DateOfBirth, ImageName, MaritalStatus, MiddleName" +
+                ", Occupation, [Plan], RegCode, Title, PaymentMode FROM Patients";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1631,7 +1584,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.PatientsDataTable dataTable) {
+        public virtual int Fill(ReportDataSet.PatientsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1644,9 +1597,9 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.PatientsDataTable GetData() {
+        public virtual ReportDataSet.PatientsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.PatientsDataTable dataTable = new DataSet1.PatientsDataTable();
+            ReportDataSet.PatientsDataTable dataTable = new ReportDataSet.PatientsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1654,14 +1607,14 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.PatientsDataTable dataTable) {
+        public virtual int Update(ReportDataSet.PatientsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(ReportDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Patients");
         }
         
@@ -1709,7 +1662,6 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         public virtual int Insert(
                     System.Guid Id, 
                     string FirstName, 
-                    string LastName, 
                     string IdNumber, 
                     string Email, 
                     string PhoneNumber, 
@@ -1735,100 +1687,94 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
             }
-            if ((LastName == null)) {
+            if ((IdNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(IdNumber));
             }
-            if ((IdNumber == null)) {
+            if ((Email == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(IdNumber));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Email));
             }
-            if ((Email == null)) {
+            if ((PhoneNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Email));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
-            if ((PhoneNumber == null)) {
+            if ((Gender == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(PhoneNumber));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Gender));
             }
-            if ((Gender == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(CreateDate));
+            if ((CreatedBy == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Gender));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(CreatedBy));
             }
-            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(CreateDate));
-            if ((CreatedBy == null)) {
+            if ((Town == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(CreatedBy));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Town));
             }
-            if ((Town == null)) {
+            if ((BloodGroup == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Town));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(BloodGroup));
             }
-            if ((BloodGroup == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            this.Adapter.InsertCommand.Parameters[10].Value = ((int)(CountryId));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(DateOfBirth));
+            if ((ImageName == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(BloodGroup));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(ImageName));
             }
-            this.Adapter.InsertCommand.Parameters[11].Value = ((int)(CountryId));
-            this.Adapter.InsertCommand.Parameters[12].Value = ((System.DateTime)(DateOfBirth));
-            if ((ImageName == null)) {
+            if ((MaritalStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(ImageName));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(MaritalStatus));
             }
-            if ((MaritalStatus == null)) {
+            if ((MiddleName == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(MaritalStatus));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(MiddleName));
             }
-            if ((MiddleName == null)) {
+            if ((Occupation == null)) {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(MiddleName));
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(Occupation));
             }
-            if ((Occupation == null)) {
+            if ((Plan == null)) {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(Occupation));
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(Plan));
             }
-            if ((Plan == null)) {
+            if ((RegCode == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(Plan));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(RegCode));
             }
-            if ((RegCode == null)) {
+            if ((Title == null)) {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(RegCode));
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(Title));
             }
-            if ((Title == null)) {
-                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(Title));
-            }
-            this.Adapter.InsertCommand.Parameters[20].Value = ((byte)(PaymentMode));
+            this.Adapter.InsertCommand.Parameters[19].Value = ((byte)(PaymentMode));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1852,7 +1798,6 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         public virtual int Update(
                     System.Guid Id, 
                     string FirstName, 
-                    string LastName, 
                     string IdNumber, 
                     string Email, 
                     string PhoneNumber, 
@@ -1879,101 +1824,95 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
             }
-            if ((LastName == null)) {
+            if ((IdNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(IdNumber));
             }
-            if ((IdNumber == null)) {
+            if ((Email == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(IdNumber));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Email));
             }
-            if ((Email == null)) {
+            if ((PhoneNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Email));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
-            if ((PhoneNumber == null)) {
+            if ((Gender == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(PhoneNumber));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Gender));
             }
-            if ((Gender == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(CreateDate));
+            if ((CreatedBy == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Gender));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(CreatedBy));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(CreateDate));
-            if ((CreatedBy == null)) {
+            if ((Town == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(CreatedBy));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Town));
             }
-            if ((Town == null)) {
+            if ((BloodGroup == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Town));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(BloodGroup));
             }
-            if ((BloodGroup == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(CountryId));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(DateOfBirth));
+            if ((ImageName == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(BloodGroup));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(ImageName));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(CountryId));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(DateOfBirth));
-            if ((ImageName == null)) {
+            if ((MaritalStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(ImageName));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(MaritalStatus));
             }
-            if ((MaritalStatus == null)) {
+            if ((MiddleName == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(MaritalStatus));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(MiddleName));
             }
-            if ((MiddleName == null)) {
+            if ((Occupation == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(MiddleName));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Occupation));
             }
-            if ((Occupation == null)) {
+            if ((Plan == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Occupation));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Plan));
             }
-            if ((Plan == null)) {
+            if ((RegCode == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Plan));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(RegCode));
             }
-            if ((RegCode == null)) {
+            if ((Title == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(RegCode));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Title));
             }
-            if ((Title == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Title));
-            }
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((byte)(PaymentMode));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((System.Guid)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((byte)(PaymentMode));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((System.Guid)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1996,7 +1935,6 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string FirstName, 
-                    string LastName, 
                     string IdNumber, 
                     string Email, 
                     string PhoneNumber, 
@@ -2016,7 +1954,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
                     string Title, 
                     byte PaymentMode, 
                     System.Guid Original_Id) {
-            return this.Update(Original_Id, FirstName, LastName, IdNumber, Email, PhoneNumber, Gender, CreateDate, CreatedBy, Town, BloodGroup, CountryId, DateOfBirth, ImageName, MaritalStatus, MiddleName, Occupation, Plan, RegCode, Title, PaymentMode, Original_Id);
+            return this.Update(Original_Id, FirstName, IdNumber, Email, PhoneNumber, Gender, CreateDate, CreatedBy, Town, BloodGroup, CountryId, DateOfBirth, ImageName, MaritalStatus, MiddleName, Occupation, Plan, RegCode, Title, PaymentMode, Original_Id);
         }
     }
     
@@ -2111,7 +2049,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._patientsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Patients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -2130,7 +2068,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._patientsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Patients.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -2148,7 +2086,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._patientsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Patients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -2190,7 +2128,7 @@ namespace SkiCareHMSReport.DataSet.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(DataSet1 dataSet) {
+        public virtual int UpdateAll(ReportDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

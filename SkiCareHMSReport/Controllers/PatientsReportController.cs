@@ -1,9 +1,13 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using SkiCareHMSReport.DataSet;
 using SkiCareHMSReport.EDMX;
+using SkiCareHMSReport.Services.PatientModule;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,41 +15,109 @@ namespace SkiCareHMSReport.Controllers
 {
     public class PatientsReportController : Controller
     {
+
+        private readonly IPatientService patientService;
+
+        public PatientsReportController(IPatientService patientService)
+        {
+            this.patientService = patientService;
+        }
         // GET: PatientsReport
         public ActionResult Index()
         {
             return View();
         }
 
-
-
-        public ActionResult Download()
+        public async Task<ActionResult>Download()
         {
-            SkiCareHMSEntities context = new SkiCareHMSEntities();
-
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reports"), "PatientsReport.rpt"));
-            rd.SetDataSource(context.Patients.Select(c => new
+            try
             {
-                Id = c.Id,
-                FirstName = c.FirstName
+                ReportDocument rd = new ReportDocument();
 
-            }).ToList());
+                rd.Load(Path.Combine(Server.MapPath("~/Reports"), "PatientsReport.rpt"));
 
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
+                var list = await patientService.GetAll();
 
+                ReportDataSet dataSet = new ReportDataSet();
 
-            //rd.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
-            //rd.PrintOptions.ApplyPageMargins(new CrystalDecisions.Shared.PageMargins(5, 5, 5, 5));
-            //rd.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA5;
+                foreach (var item in list)
+                {
+                    dataSet.Patients.AddPatientsRow(
 
-            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-            stream.Seek(0, SeekOrigin.Begin);
+                                           item.Id,
 
-            return File(stream, "application/pdf", "CustomerList.pdf");
+                                           item.FullName,                                                                              
+
+                                           item.IdNumber,
+
+                                           item.Email,
+
+                                           item.PhoneNumber,
+
+                                           item.Gender,
+
+                                           item.CreateDate,
+
+                                           item.CreatedBy,
+
+                                           item.Town,
+
+                                           item.BloodGroup,
+
+                                           item.CountryId,
+
+                                           item.DateOfBirth ,
+
+                                           item.ImageName,
+
+                                           item.MaritalStatus,
+
+                                           item.MiddleName,
+
+                                           item.Occupation == null ? "" : item.Occupation.ToString(),
+                                           item.Plan,
+
+                                           item.RegCode,
+
+                                           item.Title,
+
+                                           item.PaymentMode
+
+                      );
+
+                }
+
+                rd.SetDataSource(dataSet);
+
+                Response.Buffer = false;
+
+                Response.ClearContent();
+
+                Response.ClearHeaders();
+
+                rd.PrintOptions.PaperOrientation = PaperOrientation.Landscape;
+
+                rd.PrintOptions.ApplyPageMargins(new PageMargins(5, 5, 5, 5));
+
+                rd.PrintOptions.PaperSize = PaperSize.PaperA5;
+
+                Stream stream = rd.ExportToStream(ExportFormatType.PortableDocFormat);
+
+                stream.Seek(0, SeekOrigin.Begin);
+
+                //return File(stream, "application/pdf", "eConsultation.pdf");
+                return File(stream, "application/pdf", "RegistrationReport.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                return null;
+            }
         }
+
+
 
         //public async Task<ActionResult> PatientsRegistrationReport(DateTime? fromDate, DateTime? toDate, string documentType, byte appointmentstatus, int? clinicId)
         //{
