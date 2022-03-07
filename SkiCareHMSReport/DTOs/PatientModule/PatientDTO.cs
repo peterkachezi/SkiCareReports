@@ -38,6 +38,9 @@ namespace SkiCareHMSReport.DTOs.PatientModule
         public string RawImageName { get; set; }
         public byte PaymentMode { get; set; }
         public Guid InsuranceCompanyId { get; set; }
+        public string HospitalName { get; set; }
+
+        public byte[] Logo { get; set; }
         public int Age
         {
             get

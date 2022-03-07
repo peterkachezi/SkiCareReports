@@ -28,5 +28,6 @@ namespace SkiCareHMSReport.EDMX
         public byte Status { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public byte[] Logo { get; set; }
     }
 }

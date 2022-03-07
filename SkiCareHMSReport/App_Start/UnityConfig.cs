@@ -1,3 +1,5 @@
+using SkiCareHMSReport.EDMX;
+using SkiCareHMSReport.Services.HospitalModule;
 using SkiCareHMSReport.Services.PatientModule;
 using System;
 
@@ -43,7 +45,10 @@ namespace SkiCareHMSReport
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
              container.RegisterType<IPatientService, PatientService>();
+
+             container.RegisterType<IHospitalService, Hospital_Service>();
         }
     }
 }

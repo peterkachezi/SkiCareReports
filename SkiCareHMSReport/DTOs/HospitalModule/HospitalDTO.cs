@@ -19,7 +19,7 @@ namespace SkiCareHMSReport.DTOs.HospitalModule
         public string OpeningHours { get; set; }
         public string ClosingHours { get; set; }
         public int CountyId { get; set; }
-
+        public byte[] Logo { get; set; }
         public byte Status { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedByName { get; set; }

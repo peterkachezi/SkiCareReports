@@ -1,7 +1,9 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using SkiCareHMSReport.DataSet;
+using SkiCareHMSReport.DTOs.PatientModule;
 using SkiCareHMSReport.EDMX;
+using SkiCareHMSReport.Services.HospitalModule;
 using SkiCareHMSReport.Services.PatientModule;
 using System;
 using System.Collections.Generic;
@@ -17,10 +19,13 @@ namespace SkiCareHMSReport.Controllers
     {
 
         private readonly IPatientService patientService;
+        private readonly IHospitalService  hospitalService;
 
-        public PatientsReportController(IPatientService patientService)
+        public PatientsReportController(IHospitalService hospitalService,IPatientService patientService)
         {
             this.patientService = patientService;
+
+            this.hospitalService = hospitalService;
         }
         // GET: PatientsReport
         public ActionResult Index()
@@ -36,8 +41,10 @@ namespace SkiCareHMSReport.Controllers
 
                 rd.Load(Path.Combine(Server.MapPath("~/Reports"), "PatientsReport.rpt"));
 
-                var list = await patientService.GetAll();
+                var hospital = await hospitalService.GetById();
 
+                var list = await patientService.GetAll();
+                            
                 ReportDataSet dataSet = new ReportDataSet();
 
                 foreach (var item in list)
@@ -70,19 +77,88 @@ namespace SkiCareHMSReport.Controllers
 
                                            item.ImageName,
 
-                                           item.MaritalStatus,
-
-                                           item.MiddleName,
+                                           item.MaritalStatus,                                         
 
                                            item.Occupation == null ? "" : item.Occupation.ToString(),
+
                                            item.Plan,
 
                                            item.RegCode,
 
                                            item.Title,
 
-                                           item.PaymentMode
+                                           item.PaymentMode,
 
+                                           item.HospitalName = hospital.Name,
+
+                                           item.Logo=hospital.Logo
+                      );
+
+                }            
+
+                rd.SetDataSource(dataSet);
+
+                Response.Buffer = false;
+
+                Response.ClearContent();
+
+                Response.ClearHeaders();
+
+                rd.PrintOptions.PaperOrientation = PaperOrientation.Landscape;
+
+                rd.PrintOptions.ApplyPageMargins(new PageMargins(5, 5, 5, 5));
+
+                rd.PrintOptions.PaperSize = PaperSize.PaperA5;
+
+                Stream stream = rd.ExportToStream(ExportFormatType.PortableDocFormat);
+
+                stream.Seek(0, SeekOrigin.Begin);
+
+                //return File(stream, "application/pdf", "eConsultation.pdf");
+                return File(stream, "application/pdf", "RegistrationReport.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                return null;
+            }
+        }
+
+        public async Task<ActionResult> Hospital()
+        {
+            try
+            {
+                ReportDocument rd = new ReportDocument();
+
+                rd.Load(Path.Combine(Server.MapPath("~/Reports"), "HospitalReport.rpt"));
+
+                var list = await hospitalService.GetAll();
+
+                ReportDataSet dataSet = new ReportDataSet();
+
+                foreach (var item in list)
+                {
+                    dataSet.Hospitals.AddHospitalsRow(
+
+                                           item.Name,
+
+                                           item.Town,
+
+                                           item.PhoneNumber,
+
+                                           item.PhysicalAddress,
+
+                                           item.OpeningHours,
+
+                                           item.ClosingHours,
+
+                                           item.Status,
+
+                                           item.CreateDate,                                                     
+
+                                           item.Logo                                    
                       );
 
                 }
@@ -116,8 +192,6 @@ namespace SkiCareHMSReport.Controllers
                 return null;
             }
         }
-
-
 
         //public async Task<ActionResult> PatientsRegistrationReport(DateTime? fromDate, DateTime? toDate, string documentType, byte appointmentstatus, int? clinicId)
         //{
